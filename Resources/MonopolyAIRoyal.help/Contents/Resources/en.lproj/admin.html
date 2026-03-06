@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin settings and configuration in MonopolyAIRoyal">
+    <meta name="keywords" content="admin, settings, configuration, models, rules, tournament, scheduling">
+    <title>Admin &amp; Settings</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Admin &amp; Settings</h1>
+
+    <p>The Admin screen provides comprehensive control over all aspects of MonopolyAIRoyal. It features a left sidebar with 8 configuration sections and a content area on the right.</p>
+
+    <h2>Saving Settings</h2>
+    <p>Click <strong>Save All</strong> (green button at the bottom of the Admin sidebar) to persist all changes to the database and Keychain.</p>
+
+    <h2>Configuration Sections</h2>
+
+    <h3>1. Models</h3>
+    <p>Browse and search the full catalog of 200+ AI models available through OpenRouter:</p>
+    <ul>
+        <li>Search by model name or ID</li>
+        <li>View context length, input cost, and output cost per 1M tokens</li>
+        <li>Models are fetched from the OpenRouter API (falls back to built-in list if offline)</li>
+    </ul>
+    <p>Use this section to discover models for creating <a href="ai-players.html">custom AI players</a>.</p>
+
+    <h3>2. Rules</h3>
+    <p>Configure core game rules and house rules. See <a href="game-rules.html">Game Rules</a> for full details.</p>
+    <ul>
+        <li>Starting cash, Go salary, jail bail, max turns</li>
+        <li>Win condition selection</li>
+        <li>House rule toggles (Free Parking Jackpot, Auction, etc.)</li>
+    </ul>
+
+    <h3>3. Tournament</h3>
+    <p>Set up tournament formats for multi-game series:</p>
+    <ul>
+        <li><strong>Format:</strong> Single, Best of 3, Best of 5, Round Robin, Swiss</li>
+        <li><strong>Series length:</strong> Number of games in a series</li>
+        <li><strong>Schedule:</strong> View and manage scheduled games</li>
+    </ul>
+
+    <h3>4. Streaming</h3>
+    <p>Configure live streaming output. See <a href="streaming.html">Streaming Setup</a> for details.</p>
+
+    <h3>5. Narrator</h3>
+    <p>Configure text-to-speech narration. See <a href="narration.html">Narration &amp; Voice</a> for details.</p>
+
+    <h3>6. Budget</h3>
+    <p>Set cost limits and monitor API spending. See <a href="budgets.html">Cost Tracking &amp; Budgets</a> for details.</p>
+
+    <h3>7. API Keys</h3>
+    <p>Manage API keys for OpenRouter and ElevenLabs. See <a href="api-keys.html">API Keys</a> for details.</p>
+
+    <h3>8. Scheduling</h3>
+    <p>Set up automatic game scheduling:</p>
+    <ul>
+        <li><strong>Auto-start:</strong> Toggle automatic game launching</li>
+        <li><strong>Scheduled time:</strong> Set the time for auto-start (HH:MM)</li>
+        <li><strong>Repeat:</strong> Never, Daily, or Weekly</li>
+        <li><strong>Unattended mode:</strong> Run games without user interaction</li>
+    </ul>
+
+    <div class="tip">Combine scheduling with budgets to run overnight tournaments with cost caps automatically enforced.</div>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

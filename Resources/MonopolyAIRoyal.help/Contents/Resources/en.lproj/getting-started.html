@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Getting started with MonopolyAIRoyal">
+    <meta name="keywords" content="getting started, setup, first game, install">
+    <title>Getting Started</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Getting Started</h1>
+
+    <h2>System Requirements</h2>
+    <ul>
+        <li>macOS 15.0 (Sequoia) or later</li>
+        <li>Internet connection (for AI-powered games)</li>
+        <li>OpenRouter API key (free tier available)</li>
+    </ul>
+
+    <h2>First Launch</h2>
+    <p>When you first open MonopolyAIRoyal, the app creates a local database at:</p>
+    <pre><code>~/Library/Application Support/MonopolyAIRoyal/monopoly.sqlite</code></pre>
+    <p>This stores your game history, ELO rankings, settings, and API usage records.</p>
+
+    <h2>Setting Up Your API Key</h2>
+    <ol>
+        <li>Navigate to <strong>Admin</strong> (gear icon in the sidebar)</li>
+        <li>Select the <strong>API Keys</strong> section</li>
+        <li>Enter your OpenRouter API key in the <strong>Primary Key</strong> field</li>
+        <li>Click <strong>Validate</strong> to confirm it works</li>
+        <li>Click <strong>Save All</strong> at the bottom of the sidebar</li>
+    </ol>
+
+    <div class="tip">Get a free OpenRouter API key at <code>openrouter.ai</code>. Many models offer free tiers.</div>
+
+    <h2>Running Your First Game</h2>
+    <ol>
+        <li><strong>Go to the Lobby</strong> — Click the game controller icon in the sidebar</li>
+        <li><strong>Select Players</strong> — Click on 2–6 AI player cards to select them. Selected players show a highlighted border</li>
+        <li><strong>Generate Trash Talk</strong> (optional) — Click the button to have AIs banter before the game</li>
+        <li><strong>Start the Game</strong> — Click the Start button. A 5-second countdown begins</li>
+        <li><strong>Watch the Action</strong> — The game auto-plays. AI players roll dice, buy properties, pay rent, and make strategic decisions</li>
+        <li><strong>Review Results</strong> — When the game ends, the Post-Game screen shows the winner, highlights, and standings</li>
+    </ol>
+
+    <h2>Mock Mode vs Live Mode</h2>
+
+    <div class="card">
+        <h4>Mock Mode (No API Key)</h4>
+        <p>Without an API key, the app runs in Mock Mode. AI decisions are scripted based on each player's personality type. This is great for testing and exploring the app without incurring any API costs.</p>
+    </div>
+
+    <div class="card">
+        <h4>Live Mode (With API Key)</h4>
+        <p>With a valid API key, each AI player sends game state to their assigned LLM and receives real strategic decisions. You can watch the AI's reasoning stream in real-time in the Brain Panel.</p>
+    </div>
+
+    <h2>Next Steps</h2>
+    <div class="nav-box">
+        <a href="lobby.html">Set Up a Game</a>
+        <a href="ai-players.html">Meet the AI Players</a>
+        <a href="admin.html">Configure Settings</a>
+    </div>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

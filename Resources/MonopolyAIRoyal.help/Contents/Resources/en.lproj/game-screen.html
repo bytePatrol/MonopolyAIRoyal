@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The game screen in MonopolyAIRoyal">
+    <meta name="keywords" content="game screen, board, brain panel, commentary, controls, speed, pause">
+    <title>The Game Screen</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>The Game Screen</h1>
+
+    <p>The Game screen is a 3-panel layout that shows the live game state, AI reasoning, and commentary in real-time.</p>
+
+    <h2>Layout Overview</h2>
+
+    <h3>Left Panel — Player Status (240px)</h3>
+    <p>Shows all players sorted by net worth (highest first):</p>
+    <ul>
+        <li><strong>Player name</strong> with color indicator</li>
+        <li><strong>Current cash</strong> in hand</li>
+        <li><strong>Net worth</strong> (cash + properties + buildings)</li>
+        <li><strong>Net worth bar</strong> — visual percentage relative to $6,000</li>
+        <li><strong>Property count</strong> owned</li>
+        <li><strong>House/hotel count</strong></li>
+        <li><strong>Status badge</strong> — Ready, Thinking, Waiting, or Bankrupt</li>
+    </ul>
+
+    <h3>Center — Monopoly Board</h3>
+    <p>The full 40-space Monopoly board displayed as an 11x11 grid:</p>
+    <ul>
+        <li><strong>Player tokens</strong> appear as colored circles with initials</li>
+        <li><strong>Active player</strong> token pulses with animation</li>
+        <li><strong>Properties</strong> show their color group, owner, and building count</li>
+        <li><strong>Center area</strong> displays the latest dice roll and current event</li>
+        <li>Tokens animate smoothly between spaces</li>
+    </ul>
+
+    <h3>Right Panel (320px) — Two Sections</h3>
+
+    <h4>AI Brain Panel (Top)</h4>
+    <p>The Brain Panel shows the active player's AI reasoning in real-time:</p>
+    <ul>
+        <li><strong>Header:</strong> Active player name with pulsing status dot</li>
+        <li><strong>Reasoning area:</strong> Streaming text of the AI's thought process as tokens arrive</li>
+        <li><strong>Footer stats:</strong>
+            <ul>
+                <li>Confidence percentage (0–100%)</li>
+                <li>Decision cost in USD</li>
+                <li>Model name being used</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tip">In Live Mode, you can read the AI's actual strategic reasoning. In Mock Mode, scripted reasoning is shown.</div>
+
+    <h4>Commentary Feed (Bottom)</h4>
+    <p>Live ESPN-style play-by-play commentary:</p>
+    <ul>
+        <li>Events are shown newest-first with timestamps</li>
+        <li>Each entry has an emoji icon and color-coded type badge:
+            <ul>
+                <li><span class="badge badge-cyan">Buy</span> — Property purchases</li>
+                <li><span class="badge badge-violet">Trade</span> — Player trades</li>
+                <li><span class="badge badge-amber">Rent</span> — Rent payments</li>
+                <li><span class="badge badge-red">Bankrupt</span> — Player elimination</li>
+                <li><span class="badge badge-green">Build</span> — House/hotel construction</li>
+            </ul>
+        </li>
+        <li>Maximum 50 entries displayed (oldest removed)</li>
+    </ul>
+
+    <h2>Top Control Bar</h2>
+
+    <h3>Left Side</h3>
+    <ul>
+        <li><strong>Turn counter:</strong> "TURN [N]" with active player count</li>
+        <li><strong>Phase badge:</strong> Shows current game phase with color-coded pulsing dot</li>
+    </ul>
+
+    <h3>Game Phases</h3>
+    <table>
+        <tr><th>Phase</th><th>Color</th><th>Description</th></tr>
+        <tr><td>Rolling</td><td>White</td><td>Player is rolling dice</td></tr>
+        <tr><td>Moving</td><td>Cyan</td><td>Token moving on board</td></tr>
+        <tr><td>Action</td><td>Yellow</td><td>Processing space landing</td></tr>
+        <tr><td>AI Deciding</td><td>Violet</td><td>AI thinking about a decision</td></tr>
+        <tr><td>Trading</td><td>Pink</td><td>Trade in progress</td></tr>
+        <tr><td>Building</td><td>Green</td><td>Building houses/hotels</td></tr>
+        <tr><td>Game Over</td><td>Red</td><td>Game has ended</td></tr>
+    </table>
+
+    <h3>Right Side — Controls</h3>
+
+    <h4>Speed Control</h4>
+    <p>Click the speedometer dropdown to adjust game speed:</p>
+    <table>
+        <tr><th>Speed</th><th>Turn Delay</th><th>Phase Delay</th></tr>
+        <tr><td><strong>Slow</strong></td><td>5.0 seconds</td><td>2.5 seconds</td></tr>
+        <tr><td><strong>Normal</strong></td><td>2.5 seconds</td><td>1.2 seconds</td></tr>
+        <tr><td><strong>Fast</strong></td><td>0.8 seconds</td><td>0.3 seconds</td></tr>
+        <tr><td><strong>Instant</strong></td><td>0 seconds</td><td>0 seconds</td></tr>
+    </table>
+
+    <div class="note">At Fast and Instant speeds, AI commentary falls back to pre-written templates instead of waiting for AI-generated narration.</div>
+
+    <h4>Pause / Resume</h4>
+    <p>Toggle the game between paused and running. When paused, the game loop stops and all processing halts until you resume.</p>
+
+    <h4>End Game</h4>
+    <p>Click <strong>End Game</strong> (red button) to immediately stop the game. The winner is determined by highest net worth at that moment. The app transitions to the Post-Game screen.</p>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

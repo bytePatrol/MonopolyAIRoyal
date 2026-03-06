@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Troubleshooting MonopolyAIRoyal">
+    <meta name="keywords" content="troubleshooting, problems, errors, fix, help, faq, mock mode, api error">
+    <title>Troubleshooting</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Troubleshooting</h1>
+
+    <h2>Common Issues</h2>
+
+    <div class="card">
+        <h3>AI players aren't making real decisions (Mock Mode)</h3>
+        <p><strong>Cause:</strong> No valid API key configured, or all keys are rate-limited.</p>
+        <p><strong>Fix:</strong></p>
+        <ol>
+            <li>Go to <strong>Admin &gt; API Keys</strong></li>
+            <li>Enter a valid OpenRouter API key</li>
+            <li>Click <strong>Validate</strong> — ensure it shows "Valid"</li>
+            <li>Click <strong>Save All</strong></li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>API key shows "Invalid"</h3>
+        <p><strong>Cause:</strong> The key may be expired, revoked, or incorrectly entered.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Double-check the key for typos or extra spaces</li>
+            <li>Verify the key is active on your OpenRouter dashboard</li>
+            <li>Try generating a new key</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Game is running but no commentary appears</h3>
+        <p><strong>Cause:</strong> Commentary is rate-limited or the game speed is too fast.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Slow down the game speed to <strong>Normal</strong> or <strong>Slow</strong></li>
+            <li>Commentary is generated based on event priority — minor events may be skipped</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>No sound from narration</h3>
+        <p><strong>Cause:</strong> Narrator not enabled, voice provider not configured, or volume too low.</p>
+        <p><strong>Fix:</strong></p>
+        <ol>
+            <li>Go to <strong>Admin &gt; Narrator</strong></li>
+            <li>Ensure <strong>Narrator Enabled</strong> is on</li>
+            <li>Select a provider and voice</li>
+            <li>Click <strong>Test Voice</strong> to verify audio output</li>
+            <li>Check your system volume</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>ChatterBox server won't start</h3>
+        <p><strong>Cause:</strong> Setup script missing, Python environment issue, or port conflict.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Ensure the <code>chatterbox-setup.sh</code> script is in the Resources folder</li>
+            <li>Check that Python 3 is installed on your system</li>
+            <li>Ensure port 4123 is not in use by another application</li>
+            <li>Try running the setup script manually in Terminal</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Budget limit reached — game switched to Mock Mode mid-game</h3>
+        <p><strong>Cause:</strong> A budget limit (per-game, daily, or monthly) was exceeded.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Increase budget limits in <strong>Admin &gt; Budget</strong></li>
+            <li>Use cheaper models (Gemini Flash, DeepSeek) to reduce costs</li>
+            <li>The game continues in Mock Mode — no data is lost</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>ELO ratings aren't updating</h3>
+        <p><strong>Cause:</strong> Games may not be completing properly, or database write failed.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Ensure games end naturally or via the End Game button (don't force-quit the app)</li>
+            <li>Check the Stats &gt; Leaderboard to verify current ratings</li>
+            <li>ELO updates happen after each completed game</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Game screen shows blank or unresponsive board</h3>
+        <p><strong>Cause:</strong> Game engine may not have started properly.</p>
+        <p><strong>Fix:</strong></p>
+        <ul>
+            <li>Return to the Lobby and start a new game</li>
+            <li>Ensure at least 2 players are selected</li>
+            <li>If the issue persists, quit and reopen the app</li>
+        </ul>
+    </div>
+
+    <h2>Data &amp; Storage</h2>
+
+    <div class="card">
+        <h3>Where is my data stored?</h3>
+        <ul>
+            <li><strong>Database:</strong> <code>~/Library/Application Support/MonopolyAIRoyal/monopoly.sqlite</code></li>
+            <li><strong>API Keys:</strong> macOS Keychain (secure, encrypted)</li>
+            <li><strong>Settings:</strong> Inside the SQLite database</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>How do I reset all data?</h3>
+        <p>Delete the database file at the path above. The app will create a fresh database on next launch. API keys will be preserved in the Keychain.</p>
+    </div>
+
+    <h2>Performance Tips</h2>
+    <ul>
+        <li>Close other resource-heavy applications during streaming</li>
+        <li>Use <strong>Instant</strong> speed for quick batch games</li>
+        <li>Use <strong>Slow</strong> speed for the best viewing experience with full commentary</li>
+        <li>The Monte Carlo engine runs 5,000 simulations — this is computationally light but runs async</li>
+    </ul>
+
+    <h2>Still Need Help?</h2>
+    <p>If you're experiencing an issue not covered here, try:</p>
+    <ul>
+        <li>Quitting and relaunching the application</li>
+        <li>Checking your internet connection (required for Live Mode)</li>
+        <li>Verifying your API keys are valid and have available credits</li>
+    </ul>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

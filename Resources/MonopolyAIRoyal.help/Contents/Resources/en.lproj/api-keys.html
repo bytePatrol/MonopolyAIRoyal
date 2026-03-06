@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="API key configuration in MonopolyAIRoyal">
+    <meta name="keywords" content="api keys, openrouter, elevenlabs, keychain, validation, rotation">
+    <title>API Keys &amp; Configuration</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>API Keys &amp; Configuration</h1>
+
+    <p>MonopolyAIRoyal uses API keys to connect to AI model providers and voice services. All keys are stored securely in your macOS Keychain.</p>
+
+    <h2>OpenRouter API Keys</h2>
+    <p>OpenRouter is the gateway to 200+ AI models. You need at least one key for Live Mode.</p>
+
+    <h3>Key Slots</h3>
+    <table>
+        <tr><th>Slot</th><th>Purpose</th></tr>
+        <tr><td><strong>Primary Key</strong></td><td>Used for all API calls by default</td></tr>
+        <tr><td><strong>Fallback Key 1</strong></td><td>Automatically used if primary is rate-limited</td></tr>
+        <tr><td><strong>Fallback Key 2</strong></td><td>Third option in the rotation</td></tr>
+        <tr><td><strong>Fallback Key 3</strong></td><td>Fourth option in the rotation</td></tr>
+    </table>
+
+    <h3>Key Rotation</h3>
+    <p>If the current key receives a rate limit response (HTTP 429), the app automatically rotates to the next available key. If all keys are exhausted, the app falls back to Mock Mode for the remainder of the game.</p>
+
+    <h3>Validating Keys</h3>
+    <ol>
+        <li>Enter your key in the password field</li>
+        <li>Click <strong>Validate</strong></li>
+        <li>The status indicator shows:
+            <ul>
+                <li><span class="badge badge-green">Valid</span> — Key works, models can be fetched</li>
+                <li><span class="badge badge-red">Invalid</span> — Key rejected by OpenRouter</li>
+                <li><span class="badge badge-amber">Checking</span> — Validation in progress</li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="warning">When a valid key is confirmed, Mock Mode is automatically disabled and the app switches to Live Mode.</div>
+
+    <h2>ElevenLabs API Key</h2>
+    <p>Required only if you want to use ElevenLabs voices for narration. Enter the key and click Validate to confirm.</p>
+
+    <h2>Security</h2>
+    <ul>
+        <li>All keys are stored in the macOS Keychain — not in plain text files</li>
+        <li>Keys are never displayed in full after saving (password field masking)</li>
+        <li>Keys are retrieved securely on app launch</li>
+    </ul>
+
+    <h2>Getting API Keys</h2>
+    <div class="card">
+        <h4>OpenRouter</h4>
+        <p>Sign up at <code>openrouter.ai</code> and navigate to your API keys page. Many models have free tiers for low-volume usage.</p>
+    </div>
+    <div class="card">
+        <h4>ElevenLabs</h4>
+        <p>Sign up at <code>elevenlabs.io</code> and get your API key from your profile settings. A free tier is available with limited characters per month.</p>
+    </div>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

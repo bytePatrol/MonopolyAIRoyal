@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Narration and voice configuration in MonopolyAIRoyal">
+    <meta name="keywords" content="narration, voice, tts, openai, elevenlabs, chatterbox, speech">
+    <title>Narration &amp; Voice</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Narration &amp; Voice</h1>
+
+    <p>MonopolyAIRoyal features live text-to-speech narration of game commentary, giving your AI Monopoly games a broadcast feel. Three voice providers are supported.</p>
+
+    <h2>Enabling Narration</h2>
+    <p>Go to <strong>Admin &gt; Narrator</strong> and toggle <strong>Narrator Enabled</strong> on. Select your preferred provider and voice.</p>
+
+    <h2>Voice Providers</h2>
+
+    <h3>OpenAI TTS</h3>
+    <p>Uses OpenAI's text-to-speech API for high-quality narration.</p>
+    <ul>
+        <li>Requires an OpenAI-compatible API key</li>
+        <li>Available voices: Marcus, Aria, Nova, Echo, Alloy</li>
+        <li>Adjustable speed and pitch</li>
+    </ul>
+
+    <h3>ElevenLabs</h3>
+    <p>Premium voice synthesis with natural-sounding AI voices.</p>
+    <ul>
+        <li>Requires an ElevenLabs API key (see <a href="api-keys.html">API Keys</a>)</li>
+        <li>1000+ available voices</li>
+        <li>Click <strong>Fetch Voices</strong> to load your available voice list</li>
+        <li>Select a voice and click <strong>Test Voice</strong> to hear a sample</li>
+    </ul>
+
+    <h3>ChatterBox (Local TTS)</h3>
+    <p>ChatterBox is a fully local text-to-speech server that runs on your Mac. It requires no API key, no internet connection (after initial setup), and supports custom voice cloning from audio samples. It's the recommended provider for privacy-conscious users and for creating unique narrator voices.</p>
+
+    <div class="card">
+        <h4>Why ChatterBox?</h4>
+        <ul>
+            <li><strong>Free &amp; unlimited</strong> — no per-character costs, no monthly limits</li>
+            <li><strong>Fully local</strong> — audio never leaves your machine</li>
+            <li><strong>Voice cloning</strong> — upload any audio sample to create a custom narrator voice</li>
+            <li><strong>No API key required</strong></li>
+        </ul>
+    </div>
+
+    <h2>ChatterBox Prerequisites</h2>
+    <p>Before setting up ChatterBox, ensure you have the following installed on your Mac:</p>
+    <table>
+        <tr><th>Requirement</th><th>Minimum Version</th><th>How to Install</th></tr>
+        <tr><td><strong>Python</strong></td><td>3.12+</td><td><code>brew install python@3.12</code> or download from <code>python.org/downloads</code></td></tr>
+        <tr><td><strong>Git</strong></td><td>Any</td><td><code>xcode-select --install</code> (included with Xcode CLI tools)</td></tr>
+        <tr><td><strong>Disk Space</strong></td><td>~3 GB</td><td>For the TTS model (~1.5 GB), Python packages, and virtual environment</td></tr>
+    </table>
+
+    <div class="warning">The first launch downloads the ChatterBox TTS model (~1.5 GB). Subsequent launches are instant. Make sure you have a stable internet connection for the initial setup.</div>
+
+    <h2>ChatterBox Setup — In-App (Recommended)</h2>
+    <p>The easiest way to set up ChatterBox is directly from the app:</p>
+    <ol>
+        <li>Go to <strong>Admin &gt; Narrator</strong></li>
+        <li>Select <strong>ChatterBox</strong> as the narrator provider</li>
+        <li>You'll see the ChatterBox configuration panel with a connection status indicator</li>
+        <li>If ChatterBox has never been installed, click <strong>Install &amp; Start ChatterBox</strong>. If already installed, click <strong>Start ChatterBox Server</strong></li>
+        <li>The app runs the bundled setup script automatically. You'll see status updates as it progresses</li>
+        <li>Wait for the status to show <span class="badge badge-green">Connected</span> (up to 60 seconds, longer on first install)</li>
+        <li>Click <strong>Fetch Voices</strong> to load available voices</li>
+        <li>Select a voice from the dropdown and click <strong>Save All</strong></li>
+    </ol>
+
+    <h3>What the Setup Script Does</h3>
+    <p>When you click the install/start button, the app runs <code>chatterbox-setup.sh</code> which performs these steps automatically:</p>
+    <ol>
+        <li><strong>Detects Python 3.12+</strong> — searches for <code>python3.12</code>, <code>python3.13</code>, <code>python3.14</code>, or <code>python3</code></li>
+        <li><strong>Creates a virtual environment</strong> at <code>~/chatterbox-env</code></li>
+        <li><strong>Installs Python dependencies</strong> — PyTorch, torchaudio, chatterbox-tts, and supporting libraries (numpy, scipy, transformers, etc.)</li>
+        <li><strong>Clones the API server</strong> from <code>github.com/travisvn/chatterbox-tts-api</code> into <code>~/chatterbox-tts-api</code></li>
+        <li><strong>Installs server dependencies</strong> — FastAPI, uvicorn, and related packages</li>
+        <li><strong>Starts the TTS server</strong> on <code>http://127.0.0.1:4123</code></li>
+    </ol>
+
+    <div class="note">If the server is already running on port 4123, the script detects this and exits immediately without reinstalling anything.</div>
+
+    <h2>ChatterBox Setup — Manual (Terminal)</h2>
+    <p>If you prefer to run the setup manually, or if the in-app setup encounters issues:</p>
+    <ol>
+        <li>Open <strong>Terminal</strong></li>
+        <li>Navigate to the project folder:
+            <pre><code>cd ~/Desktop/Monopoly/MonopolyAIRoyal-V7</code></pre>
+        </li>
+        <li>Make the script executable and run it:
+            <pre><code>chmod +x Resources/chatterbox-setup.sh
+./Resources/chatterbox-setup.sh</code></pre>
+        </li>
+        <li>Wait for the installation to complete. You'll see progress output:
+            <pre><code>[1/4] Python: Python 3.12.x
+[2/4] Creating virtual environment ...
+     Installing dependencies ...
+[3/4] Cloning chatterbox-tts-api ...
+     Installing server dependencies ...
+[4/4] Starting ChatterBox TTS on http://127.0.0.1:4123 ...</code></pre>
+        </li>
+        <li>Once the server is running, return to the app and click <strong>Check Connection</strong> in Admin &gt; Narrator</li>
+    </ol>
+
+    <h2>ChatterBox Connection Status</h2>
+    <p>The app checks the server's <code>/status</code> endpoint to determine its state:</p>
+    <table>
+        <tr><th>Status</th><th>Meaning</th><th>Action</th></tr>
+        <tr><td><span class="badge badge-green">Connected</span></td><td>Server is running and TTS model is loaded</td><td>Ready to use — select a voice and start a game</td></tr>
+        <tr><td><span class="badge badge-amber">Loading</span></td><td>Server is up but the TTS model is still initializing</td><td>Wait — first launch downloads the ~1.5 GB model</td></tr>
+        <tr><td><span class="badge badge-red">Unreachable</span></td><td>Cannot connect to the server at all</td><td>Start the server using the button or manually via Terminal</td></tr>
+        <tr><td><span class="badge badge-red">Error</span></td><td>Server returned an error or model failed to load</td><td>Check Terminal output for error details</td></tr>
+    </table>
+
+    <h2>ChatterBox Server Configuration</h2>
+    <table>
+        <tr><th>Setting</th><th>Default</th><th>Description</th></tr>
+        <tr><td><strong>Server URL</strong></td><td><code>http://127.0.0.1:4123</code></td><td>The address where ChatterBox listens. Change this only if running on a different port or machine</td></tr>
+        <tr><td><strong>Admin Panel</strong></td><td><code>http://localhost:4124</code></td><td>ChatterBox provides a separate web-based admin interface for advanced configuration</td></tr>
+    </table>
+
+    <h2>Custom Voice Cloning</h2>
+    <p>ChatterBox can clone any voice from an audio sample. This lets you create a unique narrator for your games.</p>
+
+    <h3>Supported Audio Formats</h3>
+    <table>
+        <tr><th>Format</th><th>Extension</th></tr>
+        <tr><td>MP3</td><td><code>.mp3</code></td></tr>
+        <tr><td>WAV</td><td><code>.wav</code></td></tr>
+        <tr><td>FLAC</td><td><code>.flac</code></td></tr>
+        <tr><td>M4A / AAC</td><td><code>.m4a</code></td></tr>
+        <tr><td>OGG Vorbis</td><td><code>.ogg</code></td></tr>
+    </table>
+
+    <h3>How to Upload a Voice</h3>
+    <ol>
+        <li>Ensure the ChatterBox server is running and shows <span class="badge badge-green">Connected</span></li>
+        <li>In <strong>Admin &gt; Narrator</strong>, find the <strong>Upload Voice</strong> section</li>
+        <li>Enter a <strong>name</strong> for the voice (e.g., "SportsCaster", "DeepVoice", "BritishNarrator")</li>
+        <li>Click the file picker and select an audio file containing a clear speech sample</li>
+        <li>Click <strong>Upload</strong> and wait for the progress indicator to complete</li>
+        <li>Click <strong>Fetch Voices</strong> to refresh the voice list</li>
+        <li>Select your new voice from the dropdown</li>
+        <li>Click <strong>Test Voice</strong> to hear a sample narration with the new voice</li>
+    </ol>
+
+    <div class="tip">For best voice cloning results, use a clean audio sample of 10–30 seconds with a single speaker, minimal background noise, and clear enunciation. WAV or FLAC formats preserve the most audio quality.</div>
+
+    <h3>Finding Community Voices</h3>
+    <p>You can discover pre-made voice models at <strong>Fish Audio</strong> (<code>fish.audio/discovery</code>). Download voice samples from the community library and upload them to ChatterBox.</p>
+
+    <h2>ChatterBox Fallback Behavior</h2>
+    <p>If ChatterBox fails during a game (server crash, timeout, etc.), the app automatically handles it:</p>
+    <ol>
+        <li>The current narration attempt is marked as failed</li>
+        <li>The app falls back to <strong>ElevenLabs</strong> (if an API key is configured)</li>
+        <li>If ElevenLabs is unavailable, it falls back to <strong>macOS system speech</strong> (AVSpeechSynthesizer)</li>
+        <li>ChatterBox is retried only after a successful connection check</li>
+    </ol>
+    <p>The game continues uninterrupted — narration gracefully degrades rather than failing.</p>
+
+    <h2>ChatterBox Troubleshooting</h2>
+
+    <div class="card">
+        <h4>"Python 3.12+ is required but not found"</h4>
+        <p>The setup script needs Python 3.12 or newer. Install it via Homebrew:</p>
+        <pre><code>brew install python@3.12</code></pre>
+        <p>Or download directly from <code>python.org/downloads</code>. After installing, restart Terminal and try again.</p>
+    </div>
+
+    <div class="card">
+        <h4>Server starts but status shows "Loading" for a long time</h4>
+        <p>On first launch, ChatterBox downloads the TTS model (~1.5 GB). This can take several minutes depending on your internet speed. Check the Terminal output for download progress. Subsequent launches are instant since the model is cached locally.</p>
+    </div>
+
+    <div class="card">
+        <h4>Port 4123 is already in use</h4>
+        <p>Another process may be using the port. Find and stop it:</p>
+        <pre><code>lsof -iTCP:4123 -sTCP:LISTEN
+kill -9 &lt;PID&gt;</code></pre>
+        <p>Then restart ChatterBox from the app.</p>
+    </div>
+
+    <div class="card">
+        <h4>Installation fails with pip errors</h4>
+        <p>Try running the setup manually with verbose output:</p>
+        <pre><code>cd ~/Desktop/Monopoly/MonopolyAIRoyal-V7
+bash -x Resources/chatterbox-setup.sh</code></pre>
+        <p>Common fixes:</p>
+        <ul>
+            <li>Upgrade pip: <code>pip install --upgrade pip</code></li>
+            <li>Clear the virtual environment and retry: <code>rm -rf ~/chatterbox-env</code></li>
+            <li>Ensure Xcode CLI tools are installed: <code>xcode-select --install</code></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h4>Voice upload fails</h4>
+        <ul>
+            <li>Ensure the file is a supported format (MP3, WAV, FLAC, M4A, or OGG)</li>
+            <li>Check that the server is still running (status shows Connected)</li>
+            <li>Try a smaller audio file (under 30 seconds)</li>
+            <li>Check the ChatterBox admin panel at <code>http://localhost:4124</code> for error details</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h4>Stopping the ChatterBox server</h4>
+        <p>To stop the server, find its process and terminate it:</p>
+        <pre><code>lsof -iTCP:4123 -sTCP:LISTEN
+kill &lt;PID&gt;</code></pre>
+        <p>Or if you launched it from Terminal, press <code>Ctrl+C</code> in that Terminal window.</p>
+    </div>
+
+    <h2>ChatterBox File Locations</h2>
+    <table>
+        <tr><th>Item</th><th>Path</th></tr>
+        <tr><td>Virtual environment</td><td><code>~/chatterbox-env/</code></td></tr>
+        <tr><td>API server code</td><td><code>~/chatterbox-tts-api/</code></td></tr>
+        <tr><td>TTS model cache</td><td><code>~/.cache/huggingface/</code> (downloaded automatically)</td></tr>
+        <tr><td>Setup script</td><td><code>Resources/chatterbox-setup.sh</code> (bundled with app)</td></tr>
+    </table>
+
+    <div class="tip">To completely uninstall ChatterBox, remove the virtual environment and server directories: <code>rm -rf ~/chatterbox-env ~/chatterbox-tts-api</code></div>
+
+    <h2>Voice Settings</h2>
+    <table>
+        <tr><th>Setting</th><th>Range</th><th>Default</th></tr>
+        <tr><td><strong>Speed</strong></td><td>0.5x – 2.0x</td><td>1.0x</td></tr>
+        <tr><td><strong>Pitch</strong></td><td>0.5x – 2.0x</td><td>1.0x</td></tr>
+        <tr><td><strong>Volume</strong></td><td>0 – 1.0</td><td>0.85</td></tr>
+    </table>
+
+    <h2>Commentary System</h2>
+    <p>The narration system reads commentary generated by the Commentary Engine, which produces ESPN-style play-by-play text. Commentary is prioritized by event importance:</p>
+    <table>
+        <tr><th>Priority</th><th>Events</th></tr>
+        <tr><td><strong>Critical</strong></td><td>Bankruptcy, game over</td></tr>
+        <tr><td><strong>High</strong></td><td>Big rent payments (&gt;$500), major acquisitions</td></tr>
+        <tr><td><strong>Normal</strong></td><td>Property buys, jail events, building</td></tr>
+        <tr><td><strong>Low</strong></td><td>Dice rolls, small taxes</td></tr>
+        <tr><td><strong>Color</strong></td><td>Between-turn strategic narrative</td></tr>
+    </table>
+
+    <div class="note">At Fast or Instant game speeds, narration switches to template-based commentary to keep up with the pace.</div>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

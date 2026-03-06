@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Lobby and game setup in MonopolyAIRoyal">
+    <meta name="keywords" content="lobby, game setup, players, select, trash talk, start game">
+    <title>Lobby &amp; Game Setup</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Lobby &amp; Game Setup</h1>
+
+    <p>The Lobby is where you assemble your AI warriors and configure the game before battle begins.</p>
+
+    <h2>Selecting Players</h2>
+    <p>The Lobby displays all available AI players as cards in a 2-column grid. Each card shows:</p>
+    <ul>
+        <li>Player name and personality type</li>
+        <li>ELO rating (top-right corner)</li>
+        <li>Recent form — last 5 games as W (green) or L (red) badges</li>
+        <li>Net worth bar and current stats</li>
+    </ul>
+
+    <h3>How to Select</h3>
+    <ul>
+        <li><strong>Click</strong> a player card to toggle selection</li>
+        <li><strong>Double-click</strong> a card to flip it and view detailed stats</li>
+        <li>You must select between <strong>2 and 6 players</strong></li>
+        <li>All 6 built-in players are pre-selected by default</li>
+    </ul>
+
+    <h3>Adding Custom Players</h3>
+    <p>Click the <strong>"ADD AI PLAYER"</strong> card (dashed border) to create a custom AI player:</p>
+    <ol>
+        <li><strong>Name:</strong> Enter a display name (shown in uppercase)</li>
+        <li><strong>Model:</strong> Search and select from 200+ OpenRouter models</li>
+        <li><strong>Personality:</strong> Choose from 6 personality types (Aggressive, Conservative, Mathematical, Trade Shark, Chaotic Evil, Balanced)</li>
+        <li><strong>Color:</strong> Pick from 10 presets or use the custom color picker</li>
+    </ol>
+
+    <h3>Removing Players</h3>
+    <p>Click the red X on a player card to remove it. You cannot remove players if only 2 remain.</p>
+
+    <h2>Pre-Game Trash Talk</h2>
+    <p>The right panel shows a <strong>Pre-Game Banter</strong> chat feed. Click the generate button to have AI players talk trash before the game begins. In Live Mode, players generate unique banter using their LLM. In Mock Mode, pre-written personality-based quips are used.</p>
+
+    <h2>Game Configuration</h2>
+    <p>The bottom bar displays the current game settings:</p>
+    <table>
+        <tr><th>Setting</th><th>Description</th><th>Default</th></tr>
+        <tr><td><strong>Format</strong></td><td>Tournament format</td><td>Single Game</td></tr>
+        <tr><td><strong>Max Turns</strong></td><td>Turn limit before game ends</td><td>200</td></tr>
+        <tr><td><strong>Starting Cash</strong></td><td>Each player's starting money</td><td>$1,500</td></tr>
+    </table>
+    <p>These values are configured in the <a href="admin.html">Admin panel</a>.</p>
+
+    <h2>Tournament Formats</h2>
+    <table>
+        <tr><th>Format</th><th>Description</th></tr>
+        <tr><td>Single Game</td><td>One game, winner takes all</td></tr>
+        <tr><td>Best of 3</td><td>First to 2 wins</td></tr>
+        <tr><td>Best of 5</td><td>First to 3 wins</td></tr>
+        <tr><td>Round Robin</td><td>Every player plays every other player</td></tr>
+        <tr><td>Swiss</td><td>Skill-based pairing across multiple rounds</td></tr>
+    </table>
+
+    <h2>Starting the Game</h2>
+    <p>Once you have 2–6 players selected, the <strong>Start Game</strong> button appears. Clicking it triggers a 5-second countdown, then the game begins and you're automatically taken to the Game screen.</p>
+
+    <div class="tip">You can cancel the countdown before it reaches zero.</div>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

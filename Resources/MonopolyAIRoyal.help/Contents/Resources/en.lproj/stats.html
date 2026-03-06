@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Statistics and analytics in MonopolyAIRoyal">
+    <meta name="keywords" content="stats, analytics, win probability, cash flow, leaderboard, ELO, property map">
+    <title>Statistics &amp; Analytics</title>
+    <link rel="stylesheet" href="../shrd/help.css">
+</head>
+<body>
+    <a href="index.html">MonopolyAIRoyal Help</a>
+    <h1>Statistics &amp; Analytics</h1>
+
+    <p>The Stats screen provides ESPN-style analytics with four interactive tabs, plus storyline narratives and head-to-head matchup data.</p>
+
+    <h2>Analytics Tabs</h2>
+
+    <h3>1. Win Probability</h3>
+    <p>A line chart tracking each player's probability of winning over the course of the game:</p>
+    <ul>
+        <li><strong>X-axis:</strong> Turn number</li>
+        <li><strong>Y-axis:</strong> Win probability (0–100%)</li>
+        <li>Each player is a colored line matching their brand color</li>
+        <li>Probabilities are calculated using the <strong>Monte Carlo engine</strong> running 5,000 simulations</li>
+        <li>Updates every 5 turns during live games</li>
+        <li>ELO strength is factored into probability calculations</li>
+    </ul>
+
+    <h3>2. Cash Flow</h3>
+    <p>Track each player's net worth progression over the game:</p>
+    <ul>
+        <li>Shows financial position changes turn by turn</li>
+        <li>Reveals wealth accumulation vs decline patterns</li>
+        <li>Identifies the moments when players gain or lose advantage</li>
+    </ul>
+
+    <h3>3. Property Map</h3>
+    <p>A board visualization showing property ownership and improvements:</p>
+    <ul>
+        <li>Each space colored by its current owner</li>
+        <li>Building counts visible on each property</li>
+        <li>Shows which players control which monopolies</li>
+        <li>Reveals strategic board positioning</li>
+    </ul>
+
+    <h3>4. Leaderboard</h3>
+    <p>Ranked player table sorted by ELO rating:</p>
+    <table>
+        <tr><th>Column</th><th>Description</th></tr>
+        <tr><td>Rank</td><td>Position by ELO</td></tr>
+        <tr><td>Player</td><td>Name with color indicator</td></tr>
+        <tr><td>ELO</td><td>Current rating</td></tr>
+        <tr><td>Games</td><td>Total games played</td></tr>
+        <tr><td>Wins</td><td>Total victories</td></tr>
+        <tr><td>Win Rate</td><td>Percentage of games won</td></tr>
+        <tr><td>Sparkline</td><td>Mini chart of last 10 ELO values</td></tr>
+    </table>
+    <p>Click any column header to sort by that metric.</p>
+
+    <h2>Storylines</h2>
+    <p>AI-generated narrative analysis of recent game patterns:</p>
+    <ul>
+        <li><strong>Dominance:</strong> "Claude has won 8 of the last 12 games..."</li>
+        <li><strong>Rivalry:</strong> "GPT-4 vs Gemini: 18 head-to-head, 9-9 split..."</li>
+        <li><strong>Comeback:</strong> "DeepSeek won 3 recent after a 5-game losing streak..."</li>
+        <li><strong>Streak:</strong> "LLaMA's 4-game losing streak continues..."</li>
+    </ul>
+
+    <h2>Head-to-Head Matrix</h2>
+    <p>A matrix showing player-vs-player win records across all games. Each cell shows the number of wins one player has over another, making it easy to spot dominant matchups and fierce rivalries.</p>
+
+    <div class="footer"><a href="index.html">Back to Help Index</a></div>
+</body>
+</html>

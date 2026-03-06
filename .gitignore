@@ -1,0 +1,28 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# App bundles & installers
+*.app/
+*.dmg
+
+# Design prototype (not needed for compilation)
+design/
+
+# Development files
+Master Project Prompt.txt
+
+# Claude
+.claude/
+
+# Dependencies (resolved via SPM)
+.build/
+Packages/
